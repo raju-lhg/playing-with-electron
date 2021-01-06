@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
+
+    <link rel="shortcut icon" href="images/favicon.ico">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <title>LHG Time Tracker</title>
+
+    <style type="text/css">
+
+      .main{
+        height: 100vh;
+      }
+      .left-sidebar{
+        border-right: 1px solid #bbc0c4;
+      }
+
+      .timer{
+        display: flex;
+        align-items: center;
+      }
+      .play{
+        background-color: #0066ff9e;
+        border-radius: 50%;
+        color: #FFF;
+        max-height: 50px; 
+        max-width: 50px;
+
+        min-height: 40px; 
+        min-width: 40px;
+      }
+
+      .edit{
+        background-color: #0066ff9e;
+        border-radius: 50%;
+        color: #FFF;
+        max-height: 50px; 
+        max-width: 50px;
+        margin-left: 10px;
+        min-height: 40px; 
+        min-width: 40px;
+      }
+
+      .time{
+        background-color: #0066ff9e;
+        color: #FFF;
+        font-size: 25px;
+        font-weight: bold;
+        width: 120px;
+        text-align: center;
+      }
+
+      .active-project{
+        /*font-weight: bolder;*/
+        text-align: center;
+      }
+
+      .devider{
+        height: 30px;
+        width: 100%;
+        background-color: #948c8c78;
+        text-align: center;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row pt-5 main">
+        <div class="col-sm-4 left-sidebar">
+          <div class="timer">
+
+            <i class="play" data-feather="play-circle"></i>
+            <span class="time ml-2">10:05:30</span>
+            <i class="edit pl-1" data-feather="edit"></i>
+
+          </div>
+
+          <div class="active-project mt-2">
+            <h3>D: LHG-Laravel</h3>
+            <span class="mt-3" style="font-size: 13px; color: #484f56">
+              Weekly Limit : 4:02 / 40:00
+            </span>
+
+            <span class="mt-3" style="font-size: 15px; color: #000;">
+              <strong>Worked Today : 1:02</strong>
+            </span>
+          </div>
+
+          <div class="devider">
+            <span style="padding-top: 5px"><strong style="padding-top: 5px">Ligh House Graphics</strong></span>
+          </div>
+        </div>
+        <div class="col-sm-8 right-sidebar">
+          <h3>Tasks</h3>
+          <p>D: LHG-Laravel</p>
+        </div>
+      </div>
+    </div>
+    <script src="./renderer.js"></script>
+
+    <script>
+      feather.replace()
+    </script>
+  </body>
+</html>
