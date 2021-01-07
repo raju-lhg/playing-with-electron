@@ -12,11 +12,14 @@
     "LHG Tracker"
   ],
   "author": {
-    "name" : "Raju Rayhan", 
-    "email" : "raju@lhgraphics.com"
+    "name": "Raju Rayhan",
+    "email": "raju@lhgraphics.com"
   },
   "license": "CC0-1.0",
   "devDependencies": {
     "electron": "^11.1.1"
+  },
+  "dependencies": {
+    "axios": "^0.21.1"
   }
 }
