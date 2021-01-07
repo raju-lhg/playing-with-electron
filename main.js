@@ -9,10 +9,13 @@ function createWindow () {
     height: 600,
     // icon: 'images/favicon.ico',
     icon: __dirname + 'images/favicon.ico',
-    webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
-    }
+    // webPreferences: {
+    //   preload: path.join(__dirname, 'preload.js')
+    // }
   })
+
+  // const ses = mainWindow.webContents.session
+  // console.log('Hello')
 
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')
@@ -20,6 +23,8 @@ function createWindow () {
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
+
+  const ses = mainWindow.webContents.session
 }
 
 // This method will be called when Electron has finished
@@ -27,6 +32,9 @@ function createWindow () {
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
   createWindow()
+
+  
+  // console.log('Hello')
   
   app.on('activate', function () {
     // On macOS it's common to re-create a window in the app when the

@@ -1,20 +1,20 @@
 {
-  "name": "electron-quick-start",
+  "name": "lhg-time-tracker",
   "version": "1.0.0",
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "repository": "https://github.com/raju-lhg/playing-with-electron",
   "keywords": [
     "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
+    "LHG Tracker"
   ],
-  "author": "GitHub",
+  "author": {
+    "name" : "Raju Rayhan", 
+    "email" : "raju@lhgraphics.com"
+  },
   "license": "CC0-1.0",
   "devDependencies": {
     "electron": "^11.1.1"
