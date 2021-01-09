@@ -1,5 +1,6 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, remote} = require('electron')
+const settings = require('electron-settings')
 const screenshot = require('screenshot-desktop')
 const path = require('path')
 const url = require('url')
@@ -8,6 +9,13 @@ const axios = require('axios')
 const apiBase = 'http://localhost:8000/api/'
 
 function createWindow () {
+  settings.has('userData').then(userData => {
+    // console.log('userData' + userData)
+    
+  });
+
+  console.log('File used for Persisting Data - ' +
+    settings.file());
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 800,
@@ -16,7 +24,8 @@ function createWindow () {
     icon: __dirname + 'images/favicon.ico',
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
-      nodeIntegration: true
+      nodeIntegration: true,
+      enableRemoteModule: true
     }
   })
 
@@ -66,11 +75,17 @@ function captureScreen(){
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
+  // settings.has('userData').then(userData => {
+  //   console.log('userData' + userData)
+  // });
+
+  // console.log('File used for Persisting Data - ' +
+  //   settings.file());
   createWindow()
   // captureScreen()
   setInterval(function(){ 
       captureScreen() 
-  }, 10000);
+  }, 300000);
 
   
   // console.log('Hello')

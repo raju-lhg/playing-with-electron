@@ -1,7 +1,12 @@
-const {app, BrowserWindow} = require('electron')
-const path = require('path')
+const remote = require('electron')
+// const { remote } = require("electron");
+const authService = require("./services/auth/auth.service");
+// const path = require('path')
 const axios = require('axios')
 const screenshot = require('screenshot-desktop')
+// const Store = require('electron-store');
+
+// const store = new Store();
 
 const loginBtn = document.getElementById('loginBtn')
 const screen = document.getElementById('screen')
@@ -13,17 +18,22 @@ const apiLogin = 'http://localhost:8000/api/login'
 // setInterval(function(){ 
 //     captureScreen() 
 // }, 20000);
+
+// function loginUser(){
+//     axios.post(apiLogin, {
+//         email: userEmail.value,
+//         password: userPassword.value
+//     })
+//         .then((response) => {                        
+//             const userData = response.data?.data
+//             // store.set('userData', userData)
+//             console.log('userData',userData)
+//         }, (error) => {
+//             console.log(error);
+//         });
+// }
 loginBtn.addEventListener('click', function(){
-    // captureScreen()
-    axios.post(apiLogin, {
-        email: userEmail.nodeValue,
-        password: userPassword.value
-    })
-    .then((response) => {
-    console.log(response);
-    }, (error) => {
-    console.log(error);
-    });
+    authService.login(userEmail.value, userPassword.value)    
 })
 
 function captureScreen(){
