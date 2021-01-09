@@ -3,6 +3,9 @@ const {app, BrowserWindow} = require('electron')
 const screenshot = require('screenshot-desktop')
 const path = require('path')
 const url = require('url')
+const axios = require('axios')
+
+const apiBase = 'http://localhost:8000/api/'
 
 function createWindow () {
   // Create the browser window.
@@ -36,11 +39,23 @@ function createWindow () {
   const ses = mainWindow.webContents.session
 }
 
+function sendImage(image){
+  axios.post(apiBase + 'capture-image', {
+      image: image,
+  })
+  .then((response) => {
+  // console.log(response)
+  }, (error) => {
+  console.log(error);
+  });
+}
+
 function captureScreen(){
   screenshot({format: 'png'}).then((img) => {
     // img: Buffer filled with jpg goodness
     const image = img.toString('base64');
-    console.log(image);
+    // console.log(image)
+    sendImage(image)
     // screen.src = 'data:image/png;base64,' + image;
   }).catch((err) => {
     console.log(err);
@@ -55,7 +70,7 @@ app.whenReady().then(() => {
   // captureScreen()
   setInterval(function(){ 
       captureScreen() 
-  }, 300000);
+  }, 10000);
 
   
   // console.log('Hello')
