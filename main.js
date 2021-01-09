@@ -1,5 +1,6 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron')
+const screenshot = require('screenshot-desktop')
 const path = require('path')
 const url = require('url')
 
@@ -27,6 +28,7 @@ function createWindow () {
     slashes: true
   }))
   mainWindow.setMenuBarVisibility(false)
+  mainWindow.webContents.openDevTools();
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
@@ -34,11 +36,26 @@ function createWindow () {
   const ses = mainWindow.webContents.session
 }
 
+function captureScreen(){
+  screenshot({format: 'png'}).then((img) => {
+    // img: Buffer filled with jpg goodness
+    const image = img.toString('base64');
+    console.log(image);
+    // screen.src = 'data:image/png;base64,' + image;
+  }).catch((err) => {
+    console.log(err);
+  })
+}
+
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
   createWindow()
+  // captureScreen()
+  setInterval(function(){ 
+      captureScreen() 
+  }, 300000);
 
   
   // console.log('Hello')
