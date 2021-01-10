@@ -6,16 +6,19 @@ const path = require('path')
 const url = require('url')
 const axios = require('axios')
 
+let authenticated = false; 
+let screen = 'src/login.html';
+
 const apiBase = 'http://localhost:8000/api/'
 
-function createWindow () {
-  settings.has('userData').then(userData => {
-    
-    
+async function createWindow () {
+  await settings.has('userData').then(userData => {
+    authenticated = true;
+    screen = 'src/index.html'
   });
 
-  console.log('File used for Persisting Data - ' +
-    settings.file());
+  // console.log('File used for Persisting Data - ' +
+  //   settings.file());
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 800,
@@ -30,7 +33,7 @@ function createWindow () {
   })
 
   mainWindow.loadURL(url.format({
-    pathname : path.join(__dirname, 'src/login.html'), 
+    pathname : path.join(__dirname, screen), 
     protocol: 'file', 
     slashes: true
   }))

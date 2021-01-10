@@ -24,6 +24,7 @@
     "electron-browser-storage": "^1.0.7",
     "electron-settings": "^4.0.2",
     "electron-store": "^6.0.1",
+    "jquery": "^3.5.1",
     "screenshot-desktop": "^1.12.3"
   }
 }
